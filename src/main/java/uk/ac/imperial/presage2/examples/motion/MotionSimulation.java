@@ -14,10 +14,10 @@ import uk.ac.imperial.presage2.util.location.area.AreaService;
 
 public class MotionSimulation extends RunnableSimulation {
 
-	@Parameter(name = "size")
+	@Parameter
 	public int size;
 
-	@Parameter(name = "agents", optional = true)
+	@Parameter(optional = true)
 	public int agents = 1;
 
 	@Override

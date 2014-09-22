@@ -35,7 +35,7 @@ class GameOfLife extends EnvironmentService implements ActionHandler {
 	}
 
 	@Override
-	public synchronized void registerParticipant(EnvironmentRegistrationRequest req) {
+	public void registerParticipant(EnvironmentRegistrationRequest req) {
 		def id = req.getParticipantID()
 		def pos = sharedState.get("cell",id)
 		sharedState.createGlobal(pos.toString(), id)

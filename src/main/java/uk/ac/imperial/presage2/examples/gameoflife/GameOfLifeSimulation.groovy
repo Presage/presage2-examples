@@ -14,10 +14,10 @@ import uk.ac.imperial.presage2.util.location.area.AreaService;
 
 class GameOfLifeSimulation extends RunnableSimulation {
 
-	@Parameter(name="xsize", optional=true)
-	public int xsize = 20
-	@Parameter(name="ysize", optional=true)
-	public int ysize = 20
+	@Parameter(optional=true)
+	public int xsize = 10
+	@Parameter(optional=true)
+	public int ysize = 10
 	@Parameter(name="density", optional=true)
 	public double initialDensity = 0.5
 
