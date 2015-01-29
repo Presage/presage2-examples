@@ -10,7 +10,6 @@ import uk.ac.imperial.presage2.util.location.LocationStoragePlugin;
 import uk.ac.imperial.presage2.util.location.MoveHandler;
 import uk.ac.imperial.presage2.util.location.ParticipantLocationService;
 import uk.ac.imperial.presage2.util.location.area.Area;
-import uk.ac.imperial.presage2.util.location.area.AreaService;
 
 public class MotionSimulation extends RunnableSimulation {
 
@@ -23,18 +22,15 @@ public class MotionSimulation extends RunnableSimulation {
 	@Override
 	public void initialiseScenario(Scenario scenario) {
 		addModule(Area.Bind.area2D(size, size));
-		addModule(new AbstractEnvironmentModule()
-				.addActionHandler(MoveHandler.class)
-				.addParticipantEnvironmentService(
-						ParticipantLocationService.class)
-				.addParticipantGlobalEnvironmentService(AreaService.class));
-		addObjectClass(LocationStoragePlugin.class);
+		addModule(new AbstractEnvironmentModule().addActionHandler(
+				MoveHandler.class).addParticipantEnvironmentService(
+				ParticipantLocationService.class));
+		scenario.addClass(LocationStoragePlugin.class);
 
 		for (int i = 0; i < agents; i++) {
-			scenario.addAgent(new SituatedAgent(
-					Random.randomUUID(),
-					"agent" + i,
-					new Location(Random.randomInt(size), Random.randomInt(size))));
+			scenario.addAgent(new SituatedAgent(Random.randomUUID(), "agent"
+					+ i, new Location(Random.randomInt(size), Random
+					.randomInt(size))));
 		}
 	}
 }

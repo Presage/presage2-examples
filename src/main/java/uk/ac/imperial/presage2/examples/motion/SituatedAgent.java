@@ -2,9 +2,6 @@ package uk.ac.imperial.presage2.examples.motion;
 
 import java.util.UUID;
 
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
-
 import uk.ac.imperial.presage2.core.environment.ActionHandlingException;
 import uk.ac.imperial.presage2.core.simulator.Initialisor;
 import uk.ac.imperial.presage2.core.simulator.Step;
@@ -12,6 +9,9 @@ import uk.ac.imperial.presage2.core.util.random.Random;
 import uk.ac.imperial.presage2.util.location.Location;
 import uk.ac.imperial.presage2.util.location.Move;
 import uk.ac.imperial.presage2.util.participant.AbstractParticipant;
+
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 public class SituatedAgent extends AbstractParticipant {
 
@@ -34,12 +34,11 @@ public class SituatedAgent extends AbstractParticipant {
 	@Step
 	public void step(int t) throws ActionHandlingException {
 		Location loc = myLocation.get();
-		logger.info("My location is: " + myLocation.get());
+		logger.info("My location is: " + loc);
 
-		Move m = loc
-				.getMoveTo(
-						new Location(Random.randomInt(size), Random
-								.randomInt(size)), 2);
+		Move m = new Move(Random.randomInt(3) - 1, Random
+				.randomInt(3) - 1);
+		logger.info("Move "+ m);
 		act(m);
 	}
 
