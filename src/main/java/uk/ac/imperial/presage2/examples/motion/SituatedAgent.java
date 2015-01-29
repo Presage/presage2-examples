@@ -21,7 +21,7 @@ public class SituatedAgent extends AbstractParticipant {
 	@Named("params.size")
 	public int size;
 
-	SituatedAgent(UUID id, String name, Location myLocation) {
+	protected SituatedAgent(UUID id, String name, Location myLocation) {
 		super(id, name);
 		this.myLocation = new State<Location>("util.location", myLocation);
 	}
